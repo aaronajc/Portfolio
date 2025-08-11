@@ -9,7 +9,7 @@ class executeSQL:
 
 
 
-    def __init__(self,query):
+    def __init__(self):
     #Load values form env 
       serv = getenv("serv") 
       db = getenv("db")
@@ -17,15 +17,15 @@ class executeSQL:
       pword = getenv("pword")
       #Define connect variable.... 
       self.dbc = connect(server=serv,database=db,user=usr,password=pword)
-      self.query = query
+      #self.query = query
     
 #execute SQL statment   
-    def selectSQL(self):
+    def selectSQL(self,query):
         dbc = self.dbc 
 #Begin try here 
         try:            
             with dbc.cursor() as cursor:
-                cursor.execute(self.query)
+                cursor.execute(query)
                 results = cursor.fetchall()
                 return results
 #begin catch here 

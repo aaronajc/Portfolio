@@ -16,7 +16,7 @@ ln = 1
 #Define SQL Bits 
 table = "[StagingFitBit].[UnformattedData]"
 query = f"SELECT [RowID],[DateLoaded],[Source0],[RowData],[RowHash],[RowType] FROM [StagingData].{table}"
-sql = SQLCommands.executeSQL(query)
+sql = SQLCommands.executeSQL()
 trunc = sql.truncateTable(table)
 braceOpen ="{"
 braceClose="}"
@@ -37,6 +37,6 @@ for line in binobject:
 binobject.close()
 
 #############Print Table results 
-results = sql.selectSQL()
+results = sql.selectSQL(query)
 for r in results:
     print(r)
